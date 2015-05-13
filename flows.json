@@ -1,0 +1,190 @@
+[
+    {
+        "type": "tab",
+        "id": "3da90760.c256f8",
+        "label": "Sheet 1"
+    },
+    {
+        "id": "c9801e35.367fe",
+        "type": "mongodb",
+        "hostname": "127.0.0.1",
+        "port": "27017",
+        "db": "findbugs",
+        "name": "FindBugs"
+    },
+    {
+        "id": "a52365b2.5adc98",
+        "type": "http in",
+        "name": "",
+        "url": "/BugsApi/bugs/:category",
+        "method": "get",
+        "x": 129.5,
+        "y": 46.750000953674316,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "a89932de.5766d"
+            ]
+        ]
+    },
+    {
+        "id": "a89932de.5766d",
+        "type": "function",
+        "name": "bugs query",
+        "func": "var category = msg.req.params.category || \"\";\n\nmsg.payload = (category !== 'all') ? {\"_category\": category} : {};\n\nmsg.limit = 0;\nmsg.skip = 0;\n\nreturn msg;",
+        "outputs": 1,
+        "valid": true,
+        "x": 375.25000381469727,
+        "y": 47.5,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "1e5e6932.e1a197"
+            ]
+        ]
+    },
+    {
+        "id": "1e5e6932.e1a197",
+        "type": "mongodb in",
+        "mongodb": "c9801e35.367fe",
+        "name": "find bugs",
+        "collection": "bugs",
+        "operation": "find",
+        "x": 574.0000076293945,
+        "y": 46.50000476837158,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "73104829.8cefb8"
+            ]
+        ]
+    },
+    {
+        "id": "73104829.8cefb8",
+        "type": "http response",
+        "name": "",
+        "x": 805.2500114440918,
+        "y": 74.00000190734863,
+        "z": "3da90760.c256f8",
+        "wires": []
+    },
+    {
+        "id": "c517e504.3ae818",
+        "type": "http in",
+        "name": "",
+        "url": "/BugsApi/categories",
+        "method": "get",
+        "x": 114.75,
+        "y": 93.75000286102295,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "270b1c0f.d8f4e4"
+            ]
+        ]
+    },
+    {
+        "id": "270b1c0f.d8f4e4",
+        "type": "function",
+        "name": "categories query",
+        "func": "msg.payload = [\n    { $group: { _id: \"$_category\", count: { $sum: 1 } } },\n    { $sort: { count: -1 } }\n];\n\nmsg.limit = 0;\nmsg.skip = 0;\n\nreturn msg;",
+        "outputs": 1,
+        "valid": true,
+        "x": 380.00000762939453,
+        "y": 93.25000095367432,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "85209a12.7adf68"
+            ]
+        ]
+    },
+    {
+        "id": "85209a12.7adf68",
+        "type": "mongodb in",
+        "mongodb": "c9801e35.367fe",
+        "name": "aggr bugs",
+        "collection": "bugs",
+        "operation": "aggregate",
+        "x": 577.2500076293945,
+        "y": 94.00000381469727,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "73104829.8cefb8"
+            ]
+        ]
+    },
+    {
+        "id": "88449239.77bb7",
+        "type": "http in",
+        "name": "",
+        "url": "/BugsApi/messages",
+        "method": "get",
+        "x": 113.75,
+        "y": 143.75000381469727,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "8b02796.f74fd88"
+            ]
+        ]
+    },
+    {
+        "id": "8b02796.f74fd88",
+        "type": "function",
+        "name": "patters query",
+        "func": "msg.payload = {};\nmsg.limit = 0;\nmsg.skip = 0;\n\nreturn msg;",
+        "outputs": 1,
+        "valid": true,
+        "x": 377.50000762939453,
+        "y": 145.00000095367432,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "a6bccf98.59433"
+            ]
+        ]
+    },
+    {
+        "id": "a6bccf98.59433",
+        "type": "mongodb in",
+        "mongodb": "c9801e35.367fe",
+        "name": "find messages",
+        "collection": "messages",
+        "operation": "find",
+        "x": 586.2500076293945,
+        "y": 145.00000095367432,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "73104829.8cefb8"
+            ]
+        ]
+    },
+    {
+        "id": "f57c3d3c.0a83c",
+        "type": "catch",
+        "name": "",
+        "x": 109,
+        "y": 214,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "589cc938.a76338"
+            ]
+        ]
+    },
+    {
+        "id": "589cc938.a76338",
+        "type": "debug",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "error",
+        "x": 269,
+        "y": 213,
+        "z": "3da90760.c256f8",
+        "wires": []
+    }
+]
