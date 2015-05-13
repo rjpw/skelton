@@ -2,9 +2,13 @@
 
 Example skeleton for Node-RED UI, with apologies to fans of the late great Red Skelton.
 
-## Status
+## Generator
 
-The project is in its earliest stages, and cannot even be counted on to successfully build.
+The generator used for the initial skeleton was [generator-react-webpack](https://github.com/newtriks/generator-react-webpack).
+
+## Caveat
+
+The project is in its earliest stages, and until this caveat is removed from the README it cannot even be counted on to successfully build.
 
 ## Loading Data
 
