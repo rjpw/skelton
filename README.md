@@ -2,6 +2,10 @@
 
 Example skeleton for Node-RED UI, with apologies to fans of the late great Red Skelton.
 
+## Status
+
+The project is in its earliest stages, and cannot even be counted on to successfully build.
+
 ## Loading Data
 
 The database can be reproduced from the data directory with the following steps:
