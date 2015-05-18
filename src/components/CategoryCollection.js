@@ -1,48 +1,36 @@
 'use strict';
 
 var React = require('react/addons');
+var Reflux = require('reflux');
 
-var restful = require('restful');
+var messageStore = require('stores/MessageStore');
+var categoryStore = require('stores/CategoryStore');
 
 require('styles/CategoryCollection.less');
 
-
 var CategoryCollection = React.createClass({
-    loadCategoriesFromServer: function() {
-        var self = this;
 
-        restful('api.example.com', 8080)
-            .all('categories')
-            .getAll()
-            .then(function(categories) {
-                self.setState({
-                    categories: categories
-                });
-            });
-    },
+  mixins: [
+    Reflux.connect(messageStore, "messages"),
+    Reflux.connect(categoryStore, "categories")
+  ],
 
-    getInitialState: function() {
-        return { categories: [] };
-    },
+  render: function() {
 
-    componentDidMount: function() {
-        this.loadCategoriesFromServer();
-    },
+    var self = this;
 
-    render: function() {
-        var self = this;
-        var categories  = this.state.categories.map(function(category) {
-            var data = category.data();
+    var categories  = this.state.categories.map(function(category) {
+      var desc = self.state.messages.categories[category._id].description;
+      return <li key={category._id}>{desc}</li>;
+    });
 
-            return <li key={data.id}>{data.title}</li>;
-        });
+    return (
+      <ul>
+        {categories}
+      </ul>
+    );
+  }
 
-        return (
-            <ul>
-                {categories}
-            </ul>
-        );
-    }
 });
 
 module.exports = CategoryCollection;

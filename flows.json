@@ -18,8 +18,8 @@
         "name": "",
         "url": "/BugsApi/bugs/:category",
         "method": "get",
-        "x": 129.5,
-        "y": 46.750000953674316,
+        "x": 132.83334350585938,
+        "y": 106.74999475479126,
         "z": "3da90760.c256f8",
         "wires": [
             [
@@ -34,8 +34,8 @@
         "func": "var category = msg.req.params.category || \"\";\n\nmsg.payload = (category !== 'all') ? {\"_category\": category} : {};\n\nmsg.limit = 0;\nmsg.skip = 0;\n\nreturn msg;",
         "outputs": 1,
         "valid": true,
-        "x": 375.25000381469727,
-        "y": 47.5,
+        "x": 378.58334732055664,
+        "y": 107.49999380111694,
         "z": "3da90760.c256f8",
         "wires": [
             [
@@ -50,8 +50,8 @@
         "name": "find bugs",
         "collection": "bugs",
         "operation": "find",
-        "x": 574.0000076293945,
-        "y": 46.50000476837158,
+        "x": 577.3333511352539,
+        "y": 106.49999856948853,
         "z": "3da90760.c256f8",
         "wires": [
             [
@@ -74,8 +74,8 @@
         "name": "",
         "url": "/BugsApi/categories",
         "method": "get",
-        "x": 114.75,
-        "y": 93.75000286102295,
+        "x": 118.08334350585938,
+        "y": 153.7499966621399,
         "z": "3da90760.c256f8",
         "wires": [
             [
@@ -90,8 +90,8 @@
         "func": "msg.payload = [\n    { $group: { _id: \"$_category\", count: { $sum: 1 } } },\n    { $sort: { count: -1 } }\n];\n\nmsg.limit = 0;\nmsg.skip = 0;\n\nreturn msg;",
         "outputs": 1,
         "valid": true,
-        "x": 380.00000762939453,
-        "y": 93.25000095367432,
+        "x": 383.3333511352539,
+        "y": 153.24999475479126,
         "z": "3da90760.c256f8",
         "wires": [
             [
@@ -106,8 +106,8 @@
         "name": "aggr bugs",
         "collection": "bugs",
         "operation": "aggregate",
-        "x": 577.2500076293945,
-        "y": 94.00000381469727,
+        "x": 580.5833511352539,
+        "y": 153.9999976158142,
         "z": "3da90760.c256f8",
         "wires": [
             [
@@ -121,8 +121,8 @@
         "name": "",
         "url": "/BugsApi/messages",
         "method": "get",
-        "x": 113.75,
-        "y": 143.75000381469727,
+        "x": 117.08334350585938,
+        "y": 203.7499976158142,
         "z": "3da90760.c256f8",
         "wires": [
             [
@@ -133,12 +133,12 @@
     {
         "id": "8b02796.f74fd88",
         "type": "function",
-        "name": "patters query",
+        "name": "patterns query",
         "func": "msg.payload = {};\nmsg.limit = 0;\nmsg.skip = 0;\n\nreturn msg;",
         "outputs": 1,
         "valid": true,
-        "x": 377.50000762939453,
-        "y": 145.00000095367432,
+        "x": 370.8333435058594,
+        "y": 205,
         "z": "3da90760.c256f8",
         "wires": [
             [
@@ -153,8 +153,8 @@
         "name": "find messages",
         "collection": "messages",
         "operation": "find",
-        "x": 586.2500076293945,
-        "y": 145.00000095367432,
+        "x": 589.5833511352539,
+        "y": 204.99999475479126,
         "z": "3da90760.c256f8",
         "wires": [
             [
@@ -166,8 +166,8 @@
         "id": "f57c3d3c.0a83c",
         "type": "catch",
         "name": "",
-        "x": 109,
-        "y": 214,
+        "x": 66.33334350585938,
+        "y": 369,
         "z": "3da90760.c256f8",
         "wires": [
             [
@@ -182,9 +182,71 @@
         "active": true,
         "console": "false",
         "complete": "error",
-        "x": 269,
-        "y": 213,
+        "x": 226.33334350585938,
+        "y": 368,
         "z": "3da90760.c256f8",
         "wires": []
+    },
+    {
+        "id": "bf482b75.40b7d8",
+        "type": "http in",
+        "name": "",
+        "url": "/BugsApi/bugtypes/:type",
+        "method": "get",
+        "x": 123.33332443237305,
+        "y": 62.22222280502319,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "f03f130e.0fc0f"
+            ]
+        ]
+    },
+    {
+        "id": "f03f130e.0fc0f",
+        "type": "function",
+        "name": "bugs query",
+        "func": "var bugtype = msg.req.params.type || \"\";\n\nmsg.payload = (bugtype !== 'all') ? {\"_type\": bugtype} : {};\n\nmsg.limit = 0;\nmsg.skip = 0;\n\nreturn msg;",
+        "outputs": 1,
+        "valid": true,
+        "x": 377.97221755981445,
+        "y": 62.9722204208374,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "1e5e6932.e1a197"
+            ]
+        ]
+    },
+    {
+        "id": "2ff1372c.634788",
+        "type": "http in",
+        "name": "",
+        "url": "/BugsApi/message/:id",
+        "method": "get",
+        "x": 121,
+        "y": 258,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "e3c50405.a473d"
+            ]
+        ]
+    },
+    {
+        "id": "e3c50405.a473d",
+        "type": "function",
+        "name": "messages query",
+        "func": "var id = msg.req.params.id || \"\";\n\nmsg.payload = (id !== 'all') ? {\"_id\": id} : {};\n\nmsg.limit = 0;\nmsg.skip = 0;\n\nreturn msg;",
+        "outputs": 1,
+        "valid": true,
+        "x": 378.75000762939453,
+        "y": 257.24999713897705,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "a6bccf98.59433"
+            ]
+        ]
     }
 ]

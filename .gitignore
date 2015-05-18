@@ -35,3 +35,4 @@ node_modules/
 .tmp
 dist
 /src/main.js
+.flows_cred.json.backup

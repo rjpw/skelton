@@ -1,10 +1,10 @@
 'use strict';
 
-describe('BarActionCreators', function() {
+describe('CategoryActionCreators', function() {
   var action;
 
   beforeEach(function() {
-    action = require('actions/BarActionCreators.js');
+    action = require('actions/CategoryActionCreators.js');
   });
 
   it('should be defined', function() {
