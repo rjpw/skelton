@@ -30,3 +30,11 @@ The database can be reproduced from the data directory with the following steps:
 
     load('import.js');
 
+## Potentially useful
+
+* [React Boilerplate](https://github.com/mbrio/react-boilerplate)
+* [Mark and Share](https://github.com/SmartTeleMax/MaSha)
+* [highlight.js](https://highlightjs.org/)
+* [highlights.js docs](http://highlightjs.readthedocs.org/en/latest/)
+* [PRISM](http://prismjs.com/index.html)
+

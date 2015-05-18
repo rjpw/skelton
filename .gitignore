@@ -36,3 +36,4 @@ node_modules/
 dist
 /src/main.js
 .flows_cred.json.backup
+src/javasrc
