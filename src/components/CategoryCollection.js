@@ -10,7 +10,7 @@ require('styles/CategoryCollection.less');
 
 var CategoryCollection = React.createClass({
 
-  mixins: [,
+  mixins: [
     Reflux.connect(categoryStore, "categories"),
     Reflux.connect(messageStore, "messages")
   ],
@@ -24,7 +24,7 @@ var CategoryCollection = React.createClass({
       var messages = self.state.messages,
         desc = category._id;
 
-      if (messages) {
+      if (messages && messages.categories) {
         desc = messages.categories[category._id].description;
       }
 
