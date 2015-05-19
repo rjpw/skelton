@@ -121,8 +121,8 @@
         "name": "",
         "url": "/BugsApi/messages",
         "method": "get",
-        "x": 117.08334350585938,
-        "y": 203.7499976158142,
+        "x": 117.0833740234375,
+        "y": 370.75,
         "z": "3da90760.c256f8",
         "wires": [
             [
@@ -137,8 +137,8 @@
         "func": "msg.payload = {};\nmsg.limit = 0;\nmsg.skip = 0;\n\nreturn msg;",
         "outputs": 1,
         "valid": true,
-        "x": 370.8333435058594,
-        "y": 205,
+        "x": 374.8333740234375,
+        "y": 368,
         "z": "3da90760.c256f8",
         "wires": [
             [
@@ -153,8 +153,8 @@
         "name": "find messages",
         "collection": "messages",
         "operation": "find",
-        "x": 589.5833511352539,
-        "y": 204.99999475479126,
+        "x": 599.5833740234375,
+        "y": 367,
         "z": "3da90760.c256f8",
         "wires": [
             [
@@ -167,7 +167,7 @@
         "type": "catch",
         "name": "",
         "x": 66.33334350585938,
-        "y": 369,
+        "y": 465.99999475479126,
         "z": "3da90760.c256f8",
         "wires": [
             [
@@ -183,7 +183,7 @@
         "console": "false",
         "complete": "error",
         "x": 226.33334350585938,
-        "y": 368,
+        "y": 464.99999475479126,
         "z": "3da90760.c256f8",
         "wires": []
     },
@@ -224,8 +224,8 @@
         "name": "",
         "url": "/BugsApi/message/:id",
         "method": "get",
-        "x": 121,
-        "y": 258,
+        "x": 124.0000228881836,
+        "y": 422,
         "z": "3da90760.c256f8",
         "wires": [
             [
@@ -240,12 +240,43 @@
         "func": "var id = msg.req.params.id || \"\";\n\nmsg.payload = (id !== 'all') ? {\"_id\": id} : {};\n\nmsg.limit = 0;\nmsg.skip = 0;\n\nreturn msg;",
         "outputs": 1,
         "valid": true,
-        "x": 378.75000762939453,
-        "y": 257.24999713897705,
+        "x": 381.7500305175781,
+        "y": 421.24999713897705,
         "z": "3da90760.c256f8",
         "wires": [
             [
                 "a6bccf98.59433"
+            ]
+        ]
+    },
+    {
+        "id": "c4df45ef.3b20b8",
+        "type": "http in",
+        "name": "",
+        "url": "/BugsApi/catranked",
+        "method": "get",
+        "x": 118,
+        "y": 204,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "8ac7750e.753888"
+            ]
+        ]
+    },
+    {
+        "id": "8ac7750e.753888",
+        "type": "function",
+        "name": "catranked query",
+        "func": "msg.payload = [\n    { $group: { _id: {category: \"$_category\", rank: \"$_rank\"}, count: { $sum: 1 } } },\n    { $sort: { count: -1 } }\n];\n\nmsg.limit = 0;\nmsg.skip = 0;\n\nreturn msg;",
+        "outputs": 1,
+        "valid": true,
+        "x": 368.25,
+        "y": 201.5,
+        "z": "3da90760.c256f8",
+        "wires": [
+            [
+                "85209a12.7adf68"
             ]
         ]
     }
