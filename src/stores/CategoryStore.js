@@ -12,7 +12,7 @@ var CategoryStore = Reflux.createStore({
   },
 
   onLoadCompleted: function(err, res) {
-    console.log("Category load completed", res);
+    console.log("Category load completed");
     this.categoryList = res.body;
     this.trigger(this.categoryList);
   },
@@ -28,4 +28,4 @@ var CategoryStore = Reflux.createStore({
 
 });
 
-module.exports = CategoryStore; 
+module.exports = CategoryStore;
