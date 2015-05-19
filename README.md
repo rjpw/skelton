@@ -55,8 +55,11 @@ Crucially, the resulting tree should contain the following folder:
 
 The build process will copy the java source code into the correct destination folder.
 
-## Potentially useful
+## Useful Links
 
+The following links contain reference material that has been useful in this project.
+
+* [generator-react-webpack](https://github.com/newtriks/generator-react-webpack)
 * [React Boilerplate](https://github.com/mbrio/react-boilerplate)
 * [Mark and Share](https://github.com/SmartTeleMax/MaSha)
 * [highlight.js](https://highlightjs.org/)
