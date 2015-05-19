@@ -62,4 +62,6 @@ The build process will copy the java source code into the correct destination fo
 * [highlight.js](https://highlightjs.org/)
 * [highlights.js docs](http://highlightjs.readthedocs.org/en/latest/)
 * [PRISM](http://prismjs.com/index.html)
+* [Days-Hours Heatmap](http://bl.ocks.org/oyyd/859fafc8122977a3afd6)
+* [House Hunting on Trulia](http://www.trulia.com/vis/tru247/)
 
