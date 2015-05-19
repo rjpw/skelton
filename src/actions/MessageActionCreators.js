@@ -2,6 +2,7 @@
 
 var Reflux = require('reflux');
 var request = require('superagent');
+var host = module.hot ? require('../util/apiHelper').host : '';
 
 // this creates 'load', 'load.completed' and 'load.failed'
 var MessageActionCreators = Reflux.createActions({
@@ -12,7 +13,7 @@ var MessageActionCreators = Reflux.createActions({
 MessageActionCreators.load.listen( function() {
 
   request
-    .get('http://localhost:1880/BugsApi/messages')
+    .get(host + '/BugsApi/messages')
     .set('Accept', 'application/json')
     .on('error', this.failed )
     .end( this.completed );     
