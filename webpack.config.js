@@ -6,11 +6,13 @@
  */
 'use strict';
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
 
   output: {
     filename: 'main.js',
+    sourceMapFilename: 'main.map',
     publicPath: '/assets/'
   },
 
@@ -18,8 +20,8 @@ module.exports = {
   debug: true,
   devtool: false,
   entry: [
-      'webpack/hot/only-dev-server',
-      './src/components/main.js'
+    'webpack/hot/only-dev-server',
+    './src/components/main.js'
   ],
 
   stats: {

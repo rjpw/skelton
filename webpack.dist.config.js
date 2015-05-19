@@ -7,16 +7,18 @@
 'use strict';
 
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
 
   output: {
     publicPath: '/assets/',
     path: 'dist/assets/',
+    sourceMapFilename: 'main.map',
     filename: 'main.js'
   },
 
-  debug: false,
+  debug: true,
   devtool: false,
   entry: './src/components/main.js',
 
