@@ -13,8 +13,28 @@ var BugEntry = React.createClass({
   },
 
   render: function () {
+
     var bug = this.props.bug;
-    var cname = (bug.SourceLine && bug.SourceLine._sourcefile) ? bug.SourceLine._sourcefile : 'unknown';
+    var cname = 'unknown';
+
+    if (bug.SourceLine) {
+    	if (bug.SourceLine.length) {
+    		cname = bug.SourceLine[0]._sourcefile;
+    	} else {
+    		cname = bug.SourceLine._sourcefile;
+    	}
+    } else {
+    	if (bug.Class) {
+    		if (bug.Class.SourceLine) {
+    			if (bug.Class.SourceLine.length) {
+    				cname = bug.Class.SourceLine[0]._sourcefile;
+    			} else {
+    				cname = bug.Class.SourceLine._sourcefile;
+    			}
+    		}
+    	}
+    }
+    
     return (<li onClick={this._click}>({bug._abbrev}) {cname}</li>);
   }
 

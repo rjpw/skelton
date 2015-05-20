@@ -10,13 +10,15 @@ var DataGroup = require('./DataGroup');
 
 // question: does this create a store, or use the one we already have?
 var heatMapStore = require('stores/HeatMapStore');
+var messageStore = require('stores/MessageStore');
 
 require('styles/HeatMap.less');
 
 var HeatMap = React.createClass({displayName: 'HeatMap',
 
   mixins: [
-    Reflux.connect(heatMapStore, "catRanks")
+    Reflux.connect(heatMapStore, "catRanks"),
+    Reflux.connect(messageStore, "messages")
   ],
 
   getInitialState: function () {
@@ -35,6 +37,8 @@ var HeatMap = React.createClass({displayName: 'HeatMap',
       .domain(minMax)
       .range(d3.range(11).map(function(d) { return "q" + d + "-11"; }));
 
+    // statically defined categories ... 
+    // could be replaced if needed from messageStore
     var categories = [
       "MALICIOUS_CODE", 
       "STYLE", 
@@ -66,6 +70,7 @@ var HeatMap = React.createClass({displayName: 'HeatMap',
 
     var minMax = [0, Number.MIN_VALUE];
 
+    // recalculate min and max values based on logarithmic scale
     if (this.state.catRanks) {
       this.state.catRanks.map(function (cr) {
         if (Math.log(cr.count) < minMax[0]) { minMax[0] = Math.log(cr.count); }

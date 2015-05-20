@@ -24,8 +24,28 @@ BugActionCreators.load.listen( function () {
 
 BugActionCreators.getSource.listen( function (bug) {
 
+	var path = '';
+
+  if (bug.SourceLine) {
+  	if (bug.SourceLine.length) {
+  		path = bug.SourceLine[0]._sourcepath;
+  	} else {
+  		path = bug.SourceLine._sourcepath;
+  	}
+  } else {
+  	if (bug.Class) {
+  		if (bug.Class.SourceLine) {
+  			if (bug.Class.SourceLine.length) {
+  				path = bug.Class.SourceLine[0]._sourcepath;
+  			} else {
+  				path = bug.Class.SourceLine._sourcepath;
+  			}
+  		}
+  	}
+  }
+
   request
-    .get(javaPath + bug.SourceLine._sourcepath)
+    .get(javaPath + path)
     .set('Accept', 'text/plain')
     .on('error', this.failed )
     .end( this.completed );

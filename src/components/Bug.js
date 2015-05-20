@@ -17,7 +17,6 @@ var Bug = React.createClass({
   },
 
   render: function () {
-    console.log('bug', this.state);
     return (
       <div className="Bug">
         <pre>{this.state.bug}</pre>
