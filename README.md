@@ -73,3 +73,8 @@ The following links contain reference material or libraries that have been usefu
 * [PRISM](http://prismjs.com/index.html)
 * [Mark and Share](https://github.com/SmartTeleMax/MaSha)
 * [react-grid-layout](https://github.com/STRML/react-grid-layout)
+* [Reusable Chart Components with React and D3](http://busypeoples.github.io/post/d3-with-react-js/)
+* [D3 in React](http://nicolashery.com/integrating-d3js-visualizations-in-a-react-app/)
+* [react-datagrid](https://github.com/zippyui/react-datagrid)
+* [r-layout](https://github.com/Zinggi/RLayout)
+

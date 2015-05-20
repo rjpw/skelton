@@ -2,6 +2,7 @@
 
 var React = require('react/addons');
 var ReactTransitionGroup = React.addons.TransitionGroup;
+var {Layout, resizeMixin} = require('r-layout');
 
 var BugList = require('./BugList');
 var Bug = require('./Bug');
@@ -25,15 +26,59 @@ var heatMapStore = require('stores/HeatMapStore');
 require('normalize.css');
 require('../styles/main.css');
 
+var color = c => ({ backgroundColor: c});
+
+var InnerApp = React.createClass({
+
+  render: function() {
+
+    return (
+      <Layout {...this.props} orientation="horizontal" style={{outline: "1px #000 solid"}} className='main'>
+
+        <Layout size="weight 4" orientation="vertical" style={color("#D6E6FF")}>
+
+          <Layout size="0.50 ofParent">
+            <HeatMap {...this.props} width='700' height='350'></HeatMap>
+          </Layout>
+
+          <Layout size="0.50 ofParent" style={{overflowX: "auto", overflowY: "auto"}}>
+            <BugList {...this.props} ></BugList>
+          </Layout>
+
+        </Layout>
+
+        <Layout size="weight 5" style={{overflowX: "auto", overflowY: "auto", backgroundColor: 'lightBlue'}}>
+          <Bug {...this.props} ></Bug>
+        </Layout>
+
+        <Layout size="60px" style={color("#a0a0a0")}>
+          On the right, 60px wide, stubbing out user list.
+        </Layout>
+
+      </Layout>
+    );
+  }
+
+});
+
+module.exports = InnerApp;
+
 var SkeltonApp = React.createClass({
 
   render: function() {
     return (
-      <div className='main'>
-        <HeatMap width='700' height='350'></HeatMap>
-        <BugList></BugList>
-        <Bug></Bug>
-      </div>
+
+      <Layout calculatedWidth={window.innerWidth} calculatedHeight={window.innerHeight}>
+          <Layout style={color("#FFEFD6")}>
+            <h1>&nbsp;&nbsp;BindFugs Explorer</h1>
+          </Layout>
+          {}
+          <InnerApp size="0.8 ofParent"/>
+          <Layout size="50px" style={{outline: "1px #000 solid", backgroundColor: "#FFEFD6"}}>
+            &nbsp;&nbsp;&copy; RJPW (2015)
+          </Layout>
+      </Layout>
+
     );
   }
 });

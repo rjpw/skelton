@@ -47,7 +47,7 @@ module.exports = {
     }],
     loaders: [{
       test: /\.jsx$/,
-      loader: 'babel-loader'
+      loader: 'jsx-loader?harmony'
     }, {
       test: /\.js$/,
       exclude: /node_modules/,

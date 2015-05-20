@@ -19,9 +19,19 @@ var Bug = React.createClass({
   },
 
   render: function () {
+
+    console.log(this.props);
+
+    var style = {
+      width: this.props.calculatedWidth,
+      height: this.props.calculatedHeight,
+      overflow: 'auto'
+    };
+
     return (
-      <Highlight className="Bug java">{this.state.bug}</Highlight>
+      <Highlight className="Bug java" style={style} >{this.state.bug}</Highlight>
     );
+
   }
 });
 
