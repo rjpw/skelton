@@ -3,6 +3,7 @@
 var React = require('react/addons');
 
 var Actions = require('actions/BugActionCreators');
+var sourceExtractor = require('../util/sourceExtractor');
 
 require('styles/BugEntry.less');
 
@@ -17,24 +18,8 @@ var BugEntry = React.createClass({
     var bug = this.props.bug;
     var cname = 'unknown';
 
-    if (bug.SourceLine) {
-    	if (bug.SourceLine.length) {
-    		cname = bug.SourceLine[0]._sourcefile;
-    	} else {
-    		cname = bug.SourceLine._sourcefile;
-    	}
-    } else {
-    	if (bug.Class) {
-    		if (bug.Class.SourceLine) {
-    			if (bug.Class.SourceLine.length) {
-    				cname = bug.Class.SourceLine[0]._sourcefile;
-    			} else {
-    				cname = bug.Class.SourceLine._sourcefile;
-    			}
-    		}
-    	}
-    }
-    
+    cname = sourceExtractor(bug)._sourcefile;
+
     return (<li onClick={this._click}>({bug._abbrev}) {cname}</li>);
   }
 
