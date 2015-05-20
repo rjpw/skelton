@@ -34,11 +34,12 @@ var DataGroup = React.createClass({displayName: 'DataGroup',
         x: xFunc(point._id.rank),
         y: yFunc(point._id.category),
         color: colFunc(Math.log(point.count)),
-        value:  point.count });
+        value:  point.count,
+        data: point });
 
     });
 
-    return (React.createElement("g", {className: "RdYlGn"}, childElements));
+    return (React.createElement("g", {className: "YlOrRd"}, childElements));
 
   }
 

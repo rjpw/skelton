@@ -22,8 +22,25 @@ var BugStore = Reflux.createStore({
     console.log("Error during message load", err);
   },
 
+  onSearch: function (term) {
+    this.filterTerm = term;
+
+    var filtered = [];
+
+    this.bugList.map(function (bug) {
+      if (bug._category === term.category && bug._rank === term.rank) {
+        filtered.push(bug);
+      }      
+    });
+
+    console.log(filtered);
+    this.trigger(filtered);
+
+  },
+
   getInitialState: function() {
     this.bugList = [];
+    this.filterTerm = {};
     return this.bugList;
   }
 

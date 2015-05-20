@@ -50,7 +50,7 @@ var HeatMap = React.createClass({displayName: 'HeatMap',
     return { data: [],
       margin: marginBase,
       xScale: d3.scale.linear().range([0, innerWidth ]).domain([1, 20]),
-      yScale: d3.scale.ordinal().rangePoints([innerHeight, 0]).domain(categories),
+      yScale: d3.scale.ordinal().rangePoints([0, innerHeight]).domain(categories),
       colorScale: colorScale,
       dragging: false,
       dragElement: '',
@@ -75,7 +75,7 @@ var HeatMap = React.createClass({displayName: 'HeatMap',
 
     var colorScale = d3.scale.quantize()
       .domain(minMax)
-      .range(d3.range(11).map(function(d) { return "q" + d + "-11"; }));
+      .range(d3.range(9).map(function(d) { return "q" + d + "-9"; }));
 
     return (
 
