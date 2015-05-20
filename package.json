@@ -11,9 +11,11 @@
   "mainOutput": "main",
   "dependencies": {
     "d3": "^3.5.5",
+    "highlight.js": "^8.6.0",
     "lodash": "^3.9.1",
     "normalize.css": "~3.0.3",
     "react": "~0.12.2",
+    "react-highlight": "^0.4.1",
     "react-router": "^0.11.6",
     "reflux": "^0.2.7",
     "superagent": "^1.2.0"

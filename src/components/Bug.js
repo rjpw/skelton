@@ -2,8 +2,10 @@
 
 var React = require('react/addons');
 var Reflux = require('reflux');
+var Highlight = require('react-highlight');
 var bugStore = require('stores/BugSourceStore');
 
+//require('highlight.js/styles/darkula.css');
 require('styles/Bug.less');
 
 var Bug = React.createClass({
@@ -18,9 +20,7 @@ var Bug = React.createClass({
 
   render: function () {
     return (
-      <div className="Bug">
-        <pre>{this.state.bug}</pre>
-      </div>
+      <Highlight className="Bug java">{this.state.bug}</Highlight>
     );
   }
 });

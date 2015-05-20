@@ -30,7 +30,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.jsx'],
     alias: {
       'styles': __dirname + '/src/styles',
       'mixins': __dirname + '/src/mixins',
@@ -46,6 +46,9 @@ module.exports = {
       loader: 'jsxhint'
     }],
     loaders: [{
+      test: /\.jsx$/,
+      loader: 'babel-loader'
+    }, {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'react-hot!babel-loader'
