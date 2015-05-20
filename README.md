@@ -42,7 +42,7 @@ data found in the [tomcat 6.0.41 source code](https://archive.apache.org/dist/to
 
 This application builds a client application that displays that source code, but rather than include this in the project
 please create a directory under "src" (relative to this readme) called "javasrc", and in it please extract the contents
-of the tomcat source code. On Linux, this might look like this: 
+of the tomcat source code. On Linux, this might look like this:
 
 ```
 mkdir src/javasrc
@@ -59,14 +59,17 @@ The build process will copy the java source code into the correct destination fo
 
 ## Useful Links
 
-The following links contain reference material that has been useful in this project.
+The following links contain reference material or libraries that have been useful in this project.
 
-* [generator-react-webpack](https://github.com/newtriks/generator-react-webpack)
 * [React Boilerplate](https://github.com/mbrio/react-boilerplate)
-* [Mark and Share](https://github.com/SmartTeleMax/MaSha)
 * [highlight.js](https://highlightjs.org/)
 * [highlights.js docs](http://highlightjs.readthedocs.org/en/latest/)
-* [PRISM](http://prismjs.com/index.html)
 * [Days-Hours Heatmap](http://bl.ocks.org/oyyd/859fafc8122977a3afd6)
 * [House Hunting on Trulia](http://www.trulia.com/vis/tru247/)
 
+## Resources to consider
+
+* [generator-react-webpack](https://github.com/newtriks/generator-react-webpack)
+* [PRISM](http://prismjs.com/index.html)
+* [Mark and Share](https://github.com/SmartTeleMax/MaSha)
+* [react-grid-layout](https://github.com/STRML/react-grid-layout)
