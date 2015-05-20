@@ -28,8 +28,6 @@ var SkeltonApp = React.createClass({
   render: function() {
     return (
       <div className='main'>
-        <CategoryCollection></CategoryCollection>
-        <BugList></BugList>
         <HeatMap width='700' height='350'></HeatMap>
       </div>
     );

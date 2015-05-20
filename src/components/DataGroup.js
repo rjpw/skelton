@@ -17,30 +17,24 @@ var DataGroup = React.createClass({displayName: 'DataGroup',
       colFunc = props.colorScale,
       childElements = {};
 
-    console.log('data', props.data.length);
+    // Sample data point:
+    // {
+    //   _id: {
+    //     category: "CORRECTNESS",
+    //     rank: "2"
+    //   }, 
+    //   count: 1
+    // }
 
     props.data.map( function (point, i) {
-
-      var elId = 'dp_' + i;
-      console.log('id', elId, point);
 
       childElements['dp_' + i] = React.createElement(DataPoint, {
         height:  props.height,
         width:  props.width,
         x: xFunc(point._id.rank),
         y: yFunc(point._id.category),
-        color: colFunc(point.count),
+        color: colFunc(Math.log(point.count)),
         value:  point.count });
-
-
-      // {
-      //   _id: {
-      //   category: "CORRECTNESS",
-      //   rank: "2"
-      //   }, 
-      //   count: 1
-      // }
-
 
     });
 

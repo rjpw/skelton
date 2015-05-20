@@ -68,8 +68,8 @@ var HeatMap = React.createClass({displayName: 'HeatMap',
 
     if (this.state.catRanks) {
       this.state.catRanks.map(function (cr) {
-        if (cr.count < minMax[0]) { minMax[0] = cr.count; }
-        if (cr.count > minMax[1]) { minMax[1] = cr.count; }
+        if (Math.log(cr.count) < minMax[0]) { minMax[0] = Math.log(cr.count); }
+        if (Math.log(cr.count) > minMax[1]) { minMax[1] = Math.log(cr.count); }
       });
     }
 
