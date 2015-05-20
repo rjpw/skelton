@@ -4,6 +4,7 @@ var React = require('react/addons');
 var ReactTransitionGroup = React.addons.TransitionGroup;
 
 var BugList = require('./BugList');
+var Bug = require('./Bug');
 var CategoryCollection = require('./CategoryCollection');
 var HeatMap = require('./HeatMap');
 
@@ -15,6 +16,7 @@ var categoryStore = require('stores/CategoryStore');
 
 var bugActions = require('actions/BugActionCreators');
 var bugStore = require('stores/BugStore');
+var bugSourceStore = require('stores/BugSourceStore');
 
 var heatMapActions = require('actions/HeatMapActionCreators');
 var heatMapStore = require('stores/HeatMapStore');
@@ -29,6 +31,8 @@ var SkeltonApp = React.createClass({
     return (
       <div className='main'>
         <HeatMap width='700' height='350'></HeatMap>
+        <BugList></BugList>
+        <Bug></Bug>
       </div>
     );
   }
