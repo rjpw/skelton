@@ -64,6 +64,9 @@ The following links contain reference material or libraries that have been usefu
 * [React Boilerplate](https://github.com/mbrio/react-boilerplate)
 * [highlight.js](https://highlightjs.org/)
 * [highlights.js docs](http://highlightjs.readthedocs.org/en/latest/)
+* [Overriding Text Selection Color with CSS](https://css-tricks.com/overriding-the-default-text-selection-color-with-css/)
+* [Selecting over SPAN tags](http://stackoverflow.com/questions/3904400/how-to-highlight-user-selected-text-within-a-piece-of-text-which-has-already-bee?rq=1)
+* [Safe user selection (across elements)](http://stackoverflow.com/questions/304837/javascript-user-selection-highlighting?rq=1)
 * [Days-Hours Heatmap](http://bl.ocks.org/oyyd/859fafc8122977a3afd6)
 * [House Hunting on Trulia](http://www.trulia.com/vis/tru247/)
 
