@@ -18,9 +18,26 @@ var Bug = React.createClass({
     };
   },
 
-  render: function () {
+  componentDidMount: function() {
+    this.applyBugHighlighting();
+  },
 
-    console.log(this.props);
+  componentDidUpdate: function(prevProps, prevState) {
+    this.applyBugHighlighting();
+  },
+
+  /*
+  ** This function applies highlighting to the bug on top of existing syntax highlighting.
+  ** Care must be taken not to create selection areas that span DOM tags added by the
+  ** syntax highlighter. Some discussion on the subject can be found here:
+  ** 
+  **   http://stackoverflow.com/questions/304837/javascript-user-selection-highlighting?rq=1
+  */
+  applyBugHighlighting: function () {
+    console.log('TODO: Apply Bug Highlighting');
+  },
+
+  render: function () {
 
     var style = {
       width: this.props.calculatedWidth,
