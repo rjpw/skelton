@@ -27,7 +27,7 @@ var Bug = React.createClass({
 
   getInitialState: function() {
     return {
-      bug: ''
+      bug: ' ... choose file from bug list ... '
     };
   },
 
@@ -53,9 +53,14 @@ var Bug = React.createClass({
     var node = this.getDOMNode();
     console.log(node);
     range.setStart(node, 0);
-    range.moveEnd("character", 475);
+
+    console.log(this.state.bug);
+
     range.moveStart("character", 433);
+    range.moveEnd("character", 43);
+
     console.log('selected text:', range.text());
+
     var sel = rangy.getSelection();
     sel.setSingleRange(range);
     highlighter.highlightSelection("buglight");

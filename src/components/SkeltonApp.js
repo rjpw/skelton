@@ -32,6 +32,9 @@ var InnerApp = React.createClass({
 
   render: function() {
 
+    var dummyExample = '*\n\n*\n*';
+    var bugFlagStyle = {paddingTop: '0.5em'};
+
     return (
       <Layout {...this.props} orientation="horizontal" style={{outline: "1px #000 solid"}} className='main'>
 
@@ -47,12 +50,10 @@ var InnerApp = React.createClass({
 
         </Layout>
 
-        <Layout size="weight 5" style={{overflowX: "auto", overflowY: "auto", backgroundColor: 'lightBlue'}}>
-          <Bug {...this.props} ></Bug>
-        </Layout>
+        <Layout size="10px" style={color("#a0a0a0")}><pre style={bugFlagStyle}>{dummyExample}</pre></Layout>
 
-        <Layout size="60px" style={color("#a0a0a0")}>
-          On the right, 60px wide, stubbing out user list.
+        <Layout size="weight 5" style={{overflowX: "auto", overflowY: "auto", backgroundColor: '#2b2b2b'}}>
+          <Bug {...this.props} ></Bug>
         </Layout>
 
       </Layout>
@@ -68,13 +69,12 @@ var SkeltonApp = React.createClass({
   render: function() {
     return (
 
-      <Layout calculatedWidth={window.innerWidth} calculatedHeight={window.innerHeight}>
+      <Layout calculatedWidth={window.innerWidth - 1} calculatedHeight={window.innerHeight - 1}>
           <Layout style={color("#FFEFD6")}>
             <h1>&nbsp;&nbsp;BindFugs Explorer</h1>
           </Layout>
-          {}
-          <InnerApp size="0.8 ofParent"/>
-          <Layout size="50px" style={{outline: "1px #000 solid", backgroundColor: "#FFEFD6"}}>
+          <InnerApp size="0.9 ofParent"/>
+          <Layout size="30px" style={{outline: "1px #000 solid", backgroundColor: "#FFEFD6"}}>
             &nbsp;&nbsp;&copy; RJPW (2015)
           </Layout>
       </Layout>
