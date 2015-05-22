@@ -61,24 +61,24 @@ The build process will copy the java source code into the correct destination fo
 
 The following links contain reference material or libraries that have been useful in this project.
 
-* [React Boilerplate](https://github.com/mbrio/react-boilerplate)
+* [generator-react-webpack](https://github.com/newtriks/generator-react-webpack)
 * [highlight.js](https://highlightjs.org/)
 * [highlights.js docs](http://highlightjs.readthedocs.org/en/latest/)
+* [Days-Hours Heatmap](http://bl.ocks.org/oyyd/859fafc8122977a3afd6)
+* [House Hunting on Trulia](http://www.trulia.com/vis/tru247/)
+* [r-layout](https://github.com/Zinggi/RLayout)
+* [rangy - a javascript range and selection library](https://github.com/timdown/rangy)
 * [Overriding Text Selection Color with CSS](https://css-tricks.com/overriding-the-default-text-selection-color-with-css/)
 * [Selecting over SPAN tags](http://stackoverflow.com/questions/3904400/how-to-highlight-user-selected-text-within-a-piece-of-text-which-has-already-bee?rq=1)
 * [Safe user selection (across elements)](http://stackoverflow.com/questions/304837/javascript-user-selection-highlighting?rq=1)
-* [Days-Hours Heatmap](http://bl.ocks.org/oyyd/859fafc8122977a3afd6)
-* [House Hunting on Trulia](http://www.trulia.com/vis/tru247/)
 
 ## Resources to consider
 
-* [generator-react-webpack](https://github.com/newtriks/generator-react-webpack)
+* [React Boilerplate](https://github.com/mbrio/react-boilerplate)
 * [PRISM](http://prismjs.com/index.html)
 * [Mark and Share](https://github.com/SmartTeleMax/MaSha)
 * [react-grid-layout](https://github.com/STRML/react-grid-layout)
 * [Reusable Chart Components with React and D3](http://busypeoples.github.io/post/d3-with-react-js/)
 * [D3 in React](http://nicolashery.com/integrating-d3js-visualizations-in-a-react-app/)
 * [react-datagrid](https://github.com/zippyui/react-datagrid)
-* [r-layout](https://github.com/Zinggi/RLayout)
-* [rangy - a javascript range and selection library](https://github.com/timdown/rangy)
 
