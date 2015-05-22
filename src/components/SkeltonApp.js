@@ -38,7 +38,7 @@ var InnerApp = React.createClass({
     return (
       <Layout {...this.props} orientation="horizontal" style={{outline: "1px #000 solid"}} className='main'>
 
-        <Layout size="weight 4" orientation="vertical" style={color("#D6E6FF")}>
+        <Layout size="weight 4" orientation="vertical" style={color("#3E606F")}>
 
           <Layout size="0.50 ofParent">
             <HeatMap {...this.props} width='700' height='350'></HeatMap>
@@ -81,11 +81,11 @@ var SkeltonApp = React.createClass({
     return (
 
       <Layout calculatedWidth={window.innerWidth - 1} calculatedHeight={window.innerHeight - 1}>
-          <Layout style={color("#FFEFD6")}>
+          <Layout style={color("#FCFFF5")}>
             <h1 style={headerStyle}>BindFugs Explorer</h1>
           </Layout>
           <InnerApp size="0.9 ofParent"/>
-          <Layout size="30px" style={{outline: "1px #000 solid", backgroundColor: "#FFEFD6"}}>
+          <Layout size="30px" style={{outline: "1px #000 solid", backgroundColor: "#FCFFF5"}}>
             &nbsp;&nbsp;&copy; RJPW (2015)
           </Layout>
       </Layout>

@@ -20,7 +20,7 @@ var BugEntry = React.createClass({
 
     cname = sourceExtractor(bug)._sourcefile;
 
-    return (<li onClick={this._click}>({bug._abbrev}) {cname}</li>);
+    return (<li onClick={this._click} style={{paddingLeft: '0.5em'}}>({bug._abbrev}) {cname}</li>);
   }
 
 });

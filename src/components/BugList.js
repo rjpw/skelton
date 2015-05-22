@@ -34,10 +34,10 @@ var BugList = React.createClass({
     });
 
     return (
-        <ul className="BugList">
-          {children}
-        </ul>
-      );
+      <ul className="BugList">
+        {children}
+      </ul>
+    );
   }
 });
 
