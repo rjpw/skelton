@@ -67,11 +67,22 @@ module.exports = InnerApp;
 var SkeltonApp = React.createClass({
 
   render: function() {
+
+    var headerStyle = {
+      padding: '0.5em',
+      color: '#111',
+      fontFamily: 'Helvetica Neue',
+      fontSize: '15px', 
+      fontWeight: 'bold', 
+      letterSpacing: '-1px',
+      lineHeight: 1
+    };
+
     return (
 
       <Layout calculatedWidth={window.innerWidth - 1} calculatedHeight={window.innerHeight - 1}>
           <Layout style={color("#FFEFD6")}>
-            <h1>&nbsp;&nbsp;BindFugs Explorer</h1>
+            <h1 style={headerStyle}>BindFugs Explorer</h1>
           </Layout>
           <InnerApp size="0.9 ofParent"/>
           <Layout size="30px" style={{outline: "1px #000 solid", backgroundColor: "#FFEFD6"}}>
