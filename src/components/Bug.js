@@ -51,15 +51,14 @@ var Bug = React.createClass({
 
     var range = rangy.createRange(); // document.createRange() if not using Rangy
     var node = this.getDOMNode();
-    console.log(node);
     range.setStart(node, 0);
 
-    console.log(this.state.bug);
+    //console.log(this.state.bug);
 
     range.moveStart("character", 433);
     range.moveEnd("character", 43);
 
-    console.log('selected text:', range.text());
+    //console.log('selected text:', range.text());
 
     var sel = rangy.getSelection();
     sel.setSingleRange(range);
@@ -76,6 +75,9 @@ var Bug = React.createClass({
       height: this.props.calculatedHeight,
       overflow: 'auto'
     };
+
+    var lines = this.state.bug.split('\n');
+    console.log('number of lines', lines.length);
 
     return (
       <Highlight className="Bug java" style={style} ref="highlightElement">{this.state.bug}</Highlight>
