@@ -12,13 +12,7 @@ node convert tomcat-6.0.41_findbugs.xml
 
 ## import.js
 
-Import script to create and populate a mongodb database suitable for this application. It is best run from this directory.
-
-Example usage:
-
-```
-node import
-```
+Import script to populate a mongodb database suitable for this application. It must be run from within mongodb. For an example of its use see [Loading Data](https://github.com/rjpw/skelton#loading-data).
 
 ## Analysis-July30.json
 
