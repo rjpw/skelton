@@ -35,13 +35,16 @@ var DataPoint = React.createClass({displayName: 'DataPoint',
     var itemTranslate = 'translate(' + this.props.x + ',' + this.props.y + ')';
     var classString = this.props.color;
 
+    var cellWidth = this.props.width / 21;
+    var cellHeight = this.props.height / 10;
+
     if (this.state.hovering) {
     	classString += ' hover';
     }
 
     return (
     	React.createElement("rect", {
-	    		width: 30, height: 30, rx: 4, ry: 4, 
+	    		width: cellWidth, height: cellHeight, rx: 4, ry: 4, 
 	      	className: classString, 
 	      	transform: itemTranslate,
 	      	onMouseEnter: this._mouseEnter,

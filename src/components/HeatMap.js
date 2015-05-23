@@ -25,8 +25,10 @@ var HeatMap = React.createClass({displayName: 'HeatMap',
 
     var marginBase = {top: 10, right: 45, bottom: 20, left: 45};
 
-    var outerWidth = this.props.width;
-    var outerHeight = this.props.height;
+    console.log('heatmap props', this.props);
+
+    var outerWidth = this.props.calculatedWidth;
+    var outerHeight = this.props.calculatedHeight;
 
     var innerWidth = outerWidth - marginBase.left - marginBase.right;
     var innerHeight = outerHeight - marginBase.top - marginBase.bottom;
@@ -65,8 +67,10 @@ var HeatMap = React.createClass({displayName: 'HeatMap',
 
   render: function() {
 
-    var innerWidth = this.props.width - this.state.margin.left - this.state.margin.right;
-    var innerHeight = this.props.height - this.state.margin.top - this.state.margin.bottom;
+    var outerWidth = this.props.calculatedWidth;
+    var outerHeight = this.props.calculatedHeight;
+    var innerWidth = outerWidth - this.state.margin.left - this.state.margin.right;
+    var innerHeight = outerHeight - this.state.margin.top - this.state.margin.bottom;
 
     var minMax = [0, Number.MIN_VALUE];
 
@@ -85,8 +89,8 @@ var HeatMap = React.createClass({displayName: 'HeatMap',
     return (
 
       React.createElement(VisBase, {
-        width: this.props.width,
-        height: this.props.height,
+        width: this.props.calculatedWidth,
+        height: this.props.calculatedHeight,
         margin: this.state.margin},
 
         React.createElement(DataGroup, {

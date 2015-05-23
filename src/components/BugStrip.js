@@ -30,6 +30,7 @@ var BugStrip = React.createClass({
 
   render: function () {
 
+    var sourceLine;
     var id = this.state.bugCollection._id;
     var dummyExample = '*\n\n*\n*\n*\n*\n*\n*\n*\n*\n*\n*';
 
@@ -37,23 +38,17 @@ var BugStrip = React.createClass({
     	return bug._id === id;
     });
 
-    console.log('bug', bug);
-    var sourceLine;
-
     if (bug) {
     	sourceLine = sourceExtractor(bug);
     }
 
     var style = {paddingTop: '1.5em'};
-    console.log('sl', sourceLine);
-
     var lines = this.state.bugSource.split('\n');
     var bugFlags = new Array(lines.length);
     bugFlags.push('');
 
     if (sourceLine && _.has(sourceLine, '_start')) {
     	var startVal = +sourceLine._start - 1;
-    	console.log('sv', startVal);
     	bugFlags[startVal] = "*";
     }
 

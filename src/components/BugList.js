@@ -17,13 +17,6 @@ var SELECTED_ID = null;
 require('styles/BugList.less');
 require('react-datagrid/dist/index-no-normalize.css');
 
-var columns = [
-  { name: '_id', title: 'ID', visible: false},
-  { name: 'type', title: 'Pattern'},  
-  { name: 'filename', title: 'Name'},
-  { name: 'bug', visible: false}
-];
-
 var BugList = React.createClass({
 
   mixins: [
@@ -41,7 +34,6 @@ var BugList = React.createClass({
   },
 
   onSelectionChange: function (newSelectedId, data){
-    console.log('data', data);
     SELECTED_ID = newSelectedId;
     bugActionCreators.getSource(data.bug);
     bugActionCreators.setCurrent(data.bug);
@@ -54,6 +46,14 @@ var BugList = React.createClass({
     var self = this;
     var patterns = this.state.messages.patterns;
 
+    var columns = [
+      { name: '_id', title: 'ID', visible: false},
+      { name: '_category', title: 'Category', width: (this.props.calculatedWidth * 0.15)},
+      { name: 'type', title: 'Pattern', width: (this.props.calculatedWidth * 0.55)},  
+      { name: 'filename', title: 'Name'},
+      { name: 'bug', visible: false}
+    ];
+
     if (!this.state.messages) {
       // give up here to avoid ugly workarounds
       return;
@@ -62,6 +62,7 @@ var BugList = React.createClass({
     var data = _.map(this.state.bugCollection.bugs, function (bug) {
       return {
         _id: bug._id,
+        _category: bug._category,
         type: patterns[bug._type].description,
         filename: sourceExtractor(bug)._sourcefile,
         bug: bug
