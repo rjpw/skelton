@@ -25,6 +25,9 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
+# NPM consequences
+npm-debug.log
+
 # App specific
 
 # Node-RED config (should be initialized from ~/.node-red)
