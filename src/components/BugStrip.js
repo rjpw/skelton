@@ -49,6 +49,7 @@ var BugStrip = React.createClass({
 
     var lines = this.state.bugSource.split('\n');
     var bugFlags = new Array(lines.length);
+    bugFlags.push('');
 
     if (sourceLine && _.has(sourceLine, '_start')) {
     	var startVal = +sourceLine._start - 1;
@@ -57,8 +58,9 @@ var BugStrip = React.createClass({
     }
 
     var flaggedLines = bugFlags.join('\n');
+    var bugStripStyle = {paddingTop: '1.5em', backgroundColor: '#FCFFF5'};
 
-    return (<pre>{flaggedLines}</pre>);
+    return (<pre style={bugStripStyle}>{flaggedLines}</pre>);
 
   }
 
