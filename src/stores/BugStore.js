@@ -11,7 +11,7 @@ var BugStore = Reflux.createStore({
   data: {
     buglist: [],
     filterTerm: {category: 'SECURITY', rank: '1'},
-    bugSource: ''
+    currentId: ''
   },
 
   onLoad: function(err, res) {
@@ -33,18 +33,29 @@ var BugStore = Reflux.createStore({
     this.update();
   },
 
+  onSetCurrent: function (bug) {
+    this.data.currentId = bug._id;
+    this.update();
+  },
+
   update: function () {
 
     var filtered = [];
     var term = this.data.filterTerm;
 
+    var result = {
+      bugs: [],
+      _id: this.data.currentId
+    };
+
+    // show only bugs that pass the filter
     this.data.bugList.map(function (bug) {
       if (bug._category === term.category && bug._rank === term.rank) {
-        filtered.push(bug);
+        result.bugs.push(bug);
       }
     });
 
-    this.trigger(filtered);
+    this.trigger(result);
 
   }
 

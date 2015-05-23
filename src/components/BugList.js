@@ -12,16 +12,15 @@ require('styles/BugList.less');
 
 var BugList = React.createClass({
 
-  mixins: [Reflux.connect(bugStore, "bugs")],
+  mixins: [Reflux.connect(bugStore, "bugCollection")],
 
   getInitialState: function() {
     return {
-      bugs: []
+      bugCollection: {
+        bugs: [],
+        id: ''
+      }
     };
-  },
-
-  _click: function (evt) {
-    console.log(evt);
   },
 
   render: function () {
@@ -29,7 +28,7 @@ var BugList = React.createClass({
     var children = {};
     var self = this;
 
-    this.state.bugs.map(function (bug) {
+    this.state.bugCollection.bugs.map(function (bug) {
       children[bug._id] = <BugEntry bug={bug}></BugEntry>;
     });
 

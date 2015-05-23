@@ -12,6 +12,7 @@ var BugActionCreators  =  Reflux.createActions({
 });
 
 BugActionCreators.search = Reflux.createAction();
+BugActionCreators.setCurrent = Reflux.createAction();
 
 BugActionCreators.load.listen( function () {
 

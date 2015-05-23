@@ -5,7 +5,9 @@ var ReactTransitionGroup = React.addons.TransitionGroup;
 var {Layout, resizeMixin} = require('r-layout');
 
 var BugList = require('./BugList');
+var BugStrip = require('./BugStrip');
 var Bug = require('./Bug');
+
 var CategoryCollection = require('./CategoryCollection');
 var HeatMap = require('./HeatMap');
 
@@ -32,7 +34,6 @@ var InnerApp = React.createClass({
 
   render: function() {
 
-    var dummyExample = '*\n\n*\n*';
     var bugFlagStyle = {paddingTop: '0.5em'};
 
     return (
@@ -50,10 +51,16 @@ var InnerApp = React.createClass({
 
         </Layout>
 
-        <Layout size="10px" style={color("#a0a0a0")}><pre style={bugFlagStyle}>{dummyExample}</pre></Layout>
+        <Layout size="weight 5" orientation="horizontal" style={{overflowX: "auto", overflowY: "auto", backgroundColor: '#2b2b2b'}}>
 
-        <Layout size="weight 5" style={{overflowX: "auto", overflowY: "auto", backgroundColor: '#2b2b2b'}}>
-          <Bug {...this.props} ></Bug>
+          <Layout size="10px" style={color("#a0a0a0")}>
+            <BugStrip style={bugFlagStyle} />
+          </Layout>
+
+          <Layout size="0.95 ofParent" >
+            <Bug {...this.props} />
+          </Layout>
+          
         </Layout>
 
       </Layout>

@@ -3,10 +3,8 @@
 var React = require('react/addons');
 var Reflux = require('reflux');
 var Highlight = require('react-highlight');
-var bugStore = require('stores/BugSourceStore');
-
+var bugSourceStore = require('stores/BugSourceStore');
 var rangy = require('rangy');
-rangy.init();
 
 require('rangy/lib/rangy-classapplier');
 require('rangy/lib/rangy-highlighter');
@@ -14,6 +12,7 @@ require('rangy/lib/rangy-selectionsaverestore');
 require('rangy/lib/rangy-serializer');
 require('rangy/lib/rangy-textrange');
 
+rangy.init();
 
 var highlighter = rangy.createHighlighter();
 highlighter.addClassApplier( rangy.createClassApplier("buglight") );
@@ -23,7 +22,7 @@ require('styles/Bug.less');
 
 var Bug = React.createClass({
 
-  mixins: [Reflux.connect(bugStore, "bug")],
+  mixins: [Reflux.connect(bugSourceStore, "bug")],
 
   getInitialState: function() {
     return {
@@ -47,6 +46,7 @@ var Bug = React.createClass({
   **   http://stackoverflow.com/questions/304837/javascript-user-selection-highlighting?rq=1
   */
   applyBugHighlighting: function () {
+    
     console.log('TODO: Apply Bug Highlighting');
 
     var range = rangy.createRange(); // document.createRange() if not using Rangy
@@ -75,9 +75,6 @@ var Bug = React.createClass({
       height: this.props.calculatedHeight,
       overflow: 'auto'
     };
-
-    var lines = this.state.bug.split('\n');
-    console.log('number of lines', lines.length);
 
     return (
       <Highlight className="Bug java" style={style} ref="highlightElement">{this.state.bug}</Highlight>

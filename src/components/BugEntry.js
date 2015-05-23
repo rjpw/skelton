@@ -11,6 +11,7 @@ var BugEntry = React.createClass({
 
   _click: function (evt) {
     Actions.getSource(this.props.bug);
+    Actions.setCurrent(this.props.bug);
   },
 
   render: function () {
