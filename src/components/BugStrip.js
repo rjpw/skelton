@@ -38,7 +38,7 @@ var BugStrip = React.createClass({
     });
 
     console.log('bug', bug);
-    var sourceLine = undefined;
+    var sourceLine;
 
     if (bug) {
     	sourceLine = sourceExtractor(bug);
