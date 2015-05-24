@@ -8,8 +8,6 @@ var BugList = require('./BugList');
 var BugStrip = require('./BugStrip');
 var Bug = require('./Bug');
 
-var SourceDocument = require('./SourceDocument');
-
 var CategoryCollection = require('./CategoryCollection');
 var HeatMap = require('./HeatMap');
 
