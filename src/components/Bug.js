@@ -2,7 +2,9 @@
 
 var React = require('react/addons');
 var Reflux = require('reflux');
+
 var Highlight = require('react-highlight');
+
 var bugSourceStore = require('stores/BugSourceStore');
 var rangy = require('rangy');
 
@@ -49,22 +51,18 @@ var Bug = React.createClass({
     
     console.log('TODO: Apply Bug Highlighting');
 
-    var range = rangy.createRange(); // document.createRange() if not using Rangy
-    var node = this.getDOMNode();
-    range.setStart(node, 0);
+    // var range = rangy.createRange(); // document.createRange() if not using Rangy
+    // var node = this.getDOMNode();
+    // range.setStart(node, 0);
 
-    //console.log(this.state.bug);
+    // range.moveStart("character", 433);
+    // range.moveEnd("character", 43);
 
-    range.moveStart("character", 433);
-    range.moveEnd("character", 43);
-
-    //console.log('selected text:', range.text());
-
-    var sel = rangy.getSelection();
-    sel.setSingleRange(range);
-    highlighter.highlightSelection("buglight");
-    sel.collapseToStart();
-    sel.detach();
+    // var sel = rangy.getSelection();
+    // sel.setSingleRange(range);
+    // highlighter.highlightSelection("buglight");
+    // sel.collapseToStart();
+    // sel.detach();
 
   },
 

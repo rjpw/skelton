@@ -8,6 +8,8 @@ var BugList = require('./BugList');
 var BugStrip = require('./BugStrip');
 var Bug = require('./Bug');
 
+var SourceDocument = require('./SourceDocument');
+
 var CategoryCollection = require('./CategoryCollection');
 var HeatMap = require('./HeatMap');
 
@@ -37,31 +39,41 @@ var InnerApp = React.createClass({
     var bugFlagStyle = {paddingTop: '0.5em'};
 
     return (
-      <Layout {...this.props} orientation="horizontal" style={{outline: "1px #000 solid"}} className='main'>
+      <Layout {...this.props} 
+        orientation="horizontal" 
+        style={{outline: "1px #000 solid"}} 
+        className='main'>
 
-        <Layout size="weight 4" orientation="vertical" style={color("#3E606F")}>
+        <Layout size="weight 4" 
+          orientation="vertical" 
+          style={color("#3E606F")}>
 
           <Layout size="0.50 ofParent">
-            <HeatMap {...this.props} width='700' height='350'></HeatMap>
+            <HeatMap {...this.props} width='700' height='350' />
           </Layout>
 
           <Layout size="0.50 ofParent" style={{overflowX: "auto", overflowY: "auto"}}>
-            <BugList {...this.props} ></BugList>
+            <BugList {...this.props} />
           </Layout>
 
         </Layout>
 
-        <Layout size="weight 5" orientation="horizontal" style={{overflowX: "auto", overflowY: "auto", backgroundColor: '#2b2b2b'}}>
+        <Layout {...this.props} 
+          size="weight 5" 
+          orientation="horizontal" 
+          style={{overflowX: "auto", overflowY: "auto", 
+          backgroundColor: '#2b2b2b'}}>
 
-          <Layout size="10px" style={color("#a0a0a0")}>
-            <BugStrip style={bugFlagStyle} />
+          <Layout {...this.props} size="10px" style={color("#a0a0a0")}>
+            <BugStrip {...this.props} style={bugFlagStyle} />
           </Layout>
 
-          <Layout size="0.95 ofParent" >
+          <Layout {...this.props} size="0.95 ofParent" >
             <Bug {...this.props} />
           </Layout>
-          
+
         </Layout>
+
 
       </Layout>
     );
@@ -69,7 +81,7 @@ var InnerApp = React.createClass({
 
 });
 
-module.exports = InnerApp;
+//module.exports = InnerApp;
 
 var SkeltonApp = React.createClass({
 
