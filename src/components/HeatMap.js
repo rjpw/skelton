@@ -82,8 +82,8 @@ var HeatMap = React.createClass({displayName: 'HeatMap',
 
     if (this.state.catRanks && this.state.catRanks.length > 0) {
 
-      // Note: taking the min and max from the server
-      // because we know it was sorted in the REST Api
+      // Note: taking the max from the server because we know
+      // that the data was sorted before being sent here
       var maxCount = Math.log(this.state.catRanks[0].count);
       var cellCount = this.state.catRanks.length;
 
