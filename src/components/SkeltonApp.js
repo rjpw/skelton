@@ -37,37 +37,37 @@ var InnerApp = React.createClass({
     var bugFlagStyle = {paddingTop: '0.5em'};
 
     return (
-      <Layout {...this.props} 
-        orientation="horizontal" 
-        style={{outline: "1px #000 solid"}} 
+      <Layout {...this.props}
+        orientation="horizontal"
+        style={{outline: "1px #000 solid"}}
         className='main'>
 
-        <Layout size="weight 4" 
-          orientation="vertical" 
+        <Layout size="weight 4"
+          orientation="vertical"
           style={color("#3E606F")}>
 
           <Layout size="0.50 ofParent">
-            <HeatMap {...this.props} width='700' height='350' />
+            <HeatMap width='700' height='350' />
           </Layout>
 
           <Layout size="0.50 ofParent" style={{overflowX: "auto", overflowY: "auto"}}>
-            <BugList {...this.props} />
+            <BugList />
           </Layout>
 
         </Layout>
 
-        <Layout {...this.props} 
-          size="weight 5" 
-          orientation="horizontal" 
-          style={{overflowX: "auto", overflowY: "auto", 
+        <Layout
+          size="weight 5"
+          orientation="horizontal"
+          style={{overflowX: "auto", overflowY: "auto",
           backgroundColor: '#2b2b2b'}}>
 
-          <Layout {...this.props} size="10px" style={color("#a0a0a0")}>
-            <BugStrip {...this.props} style={bugFlagStyle} />
+          <Layout size="10px" style={color("#a0a0a0")}>
+            <BugStrip style={bugFlagStyle} />
           </Layout>
 
-          <Layout {...this.props} size="0.95 ofParent" >
-            <Bug {...this.props} />
+          <Layout size="0.95 ofParent" >
+            <Bug />
           </Layout>
 
         </Layout>
@@ -83,14 +83,16 @@ var InnerApp = React.createClass({
 
 var SkeltonApp = React.createClass({
 
+  mixins: [resizeMixin],
+
   render: function() {
 
     var headerStyle = {
       padding: '0.5em',
       color: '#111',
       fontFamily: 'Helvetica Neue',
-      fontSize: '15px', 
-      fontWeight: 'bold', 
+      fontSize: '15px',
+      fontWeight: 'bold',
       letterSpacing: '-1px',
       lineHeight: 1
     };
