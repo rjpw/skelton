@@ -25,66 +25,82 @@ var HeatMap = React.createClass({displayName: 'HeatMap',
 
     var marginBase = {top: 10, right: 45, bottom: 20, left: 45};
 
-    console.log('heatmap props', this.props);
-
     var outerWidth = this.props.calculatedWidth;
     var outerHeight = this.props.calculatedHeight;
 
     var innerWidth = outerWidth - marginBase.left - marginBase.right;
     var innerHeight = outerHeight - marginBase.top - marginBase.bottom;
 
-    var minMax = [0, 9999];
-
     var colorScale = d3.scale.quantize()
-      .domain(minMax)
+      .domain([1, Math.log(1000)])
       .range(d3.range(11).map(function(d) { return "q" + d + "-11"; }));
 
-    // statically defined categories ... 
+    // statically defined categories ...
     // could be replaced if needed from messageStore
     var categories = [
-      "MALICIOUS_CODE", 
-      "STYLE", 
-      "PERFORMANCE", 
-      "BAD_PRACTICE", 
-      "MT_CORRECTNESS", 
-      "CORRECTNESS", 
-      "I18N", 
-      "EXPERIMENTAL", 
+      "MALICIOUS_CODE",
+      "STYLE",
+      "PERFORMANCE",
+      "BAD_PRACTICE",
+      "MT_CORRECTNESS",
+      "CORRECTNESS",
+      "I18N",
+      "EXPERIMENTAL",
       "SECURITY",
       "NOISE"];
 
-    return { data: [],
-      margin: marginBase,
+    return { margin: marginBase,
       xScale: d3.scale.linear().range([0, innerWidth ]).domain([1, 20]),
       yScale: d3.scale.ordinal().rangePoints([0, innerHeight]).domain(categories),
       colorScale: colorScale,
-      dragging: false,
-      dragElement: '',
-      dragStart: -9999
+      innerWidth: innerWidth,
+      innerHeight: innerHeight,
+      categories: categories
     };
+
+  },
+
+  componentWillReceiveProps: function(nextProps) {
+
+    var marginBase = this.state.margin;
+    var innerWidth = nextProps.calculatedWidth - marginBase.left - marginBase.right;
+    var innerHeight = nextProps.calculatedHeight - marginBase.top - marginBase.bottom;
+
+    this.setState({
+      xScale: d3.scale.linear().range([0, innerWidth ]).domain([1, 20]),
+      yScale: d3.scale.ordinal().rangePoints([0, innerHeight]).domain(this.state.categories),
+      innerWidth: innerWidth,
+      innerHeight: innerHeight
+    });
 
   },
 
   render: function() {
 
-    var outerWidth = this.props.calculatedWidth;
-    var outerHeight = this.props.calculatedHeight;
-    var innerWidth = outerWidth - this.state.margin.left - this.state.margin.right;
-    var innerHeight = outerHeight - this.state.margin.top - this.state.margin.bottom;
+    var numberOfColours = 9; // see class .YlOrRd in styles/DataPoint.less
+    var colorScale;
 
-    var minMax = [0, Number.MIN_VALUE];
+    if (this.state.catRanks && this.state.catRanks.length > 0) {
 
-    // recalculate min and max values based on logarithmic scale
-    if (this.state.catRanks) {
-      this.state.catRanks.map(function (cr) {
-        if (Math.log(cr.count) < minMax[0]) { minMax[0] = Math.log(cr.count); }
-        if (Math.log(cr.count) > minMax[1]) { minMax[1] = Math.log(cr.count); }
-      });
+      // Note: taking the min and max from the server
+      // because we know it was sorted in the REST Api
+      var maxCount = Math.log(this.state.catRanks[0].count);
+      var cellCount = this.state.catRanks.length;
+
+      // maps a real number to a colour class of the form 'q0-9'
+      colorScale = d3.scale.quantize()
+        .domain([0, maxCount])
+        .range(d3.range(numberOfColours).map(function(d) {
+          return "q" + d + "-" + numberOfColours;
+        }));
+
+    } else {
+      colorScale = d3.scale.quantize()
+        .domain([0, Math.log(1000)])
+        .range(d3.range(numberOfColours).map(function(d) {
+          return "q" + d + "-" + numberOfColours;
+        }));
     }
-
-    var colorScale = d3.scale.quantize()
-      .domain(minMax)
-      .range(d3.range(9).map(function(d) { return "q" + d + "-9"; }));
 
     return (
 
@@ -95,15 +111,15 @@ var HeatMap = React.createClass({displayName: 'HeatMap',
 
         React.createElement(DataGroup, {
           data: this.state.catRanks,
-          width: innerWidth,
-          height: innerHeight,
-          brush: this.state.brush,
+          width: this.state.innerWidth,
+          height: this.state.innerHeight,
           xScale: this.state.xScale,
           yScale: this.state.yScale,
           colorScale: colorScale}))
+
     );
   }
 
 });
 
-module.exports = HeatMap; 
+module.exports = HeatMap;

@@ -22,19 +22,21 @@ var DataGroup = React.createClass({displayName: 'DataGroup',
     //   _id: {
     //     category: "CORRECTNESS",
     //     rank: "2"
-    //   }, 
+    //   },
     //   count: 1
     // }
 
     props.data.map( function (point, i) {
+
+      var colClass = colFunc(Math.log(point.count));
 
       childElements['dp_' + i] = React.createElement(DataPoint, {
         height:  props.height,
         width:  props.width,
         x: xFunc(point._id.rank),
         y: yFunc(point._id.category),
-        color: colFunc(Math.log(point.count)),
-        value:  point.count,
+        color: colClass,
+        value: point.count,
         data: point });
 
     });
@@ -45,7 +47,7 @@ var DataGroup = React.createClass({displayName: 'DataGroup',
 
 });
 
-module.exports = DataGroup; 
+module.exports = DataGroup;
 
 var React = require('react');
 
