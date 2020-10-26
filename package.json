@@ -12,7 +12,7 @@
   "dependencies": {
     "d3": "^3.5.5",
     "highlight.js": "^8.6.0",
-    "lodash": ">=4.17.19",
+    "lodash": "^4.17.20",
     "normalize.css": "~3.0.3",
     "r-layout": "https://github.com/rjpw/RLayout/tarball/1c02f8cd2eebe4b5af95a6e9526c0eb53dd41146",
     "rangy": "^1.3.0",
