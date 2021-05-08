@@ -1,5 +1,11 @@
 ## Skelton
 
+## ARCHIVED
+
+This project has been inactive for years, and has been retired.
+
+<hr/>
+
 Example skeleton for Node-RED UI, with apologies to fans of the late great Red Skelton.
 
 The work represents an experimental playground for a static code analysis project based on the results
